@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "coenraads.bracket-pair-colorizer-2",
+    "xabikos.javascriptsnippets",
+    "streetsidesoftware.code-spell-checker",
+    "jack89ita.copy-filename",
+    "mrmlnc.vscode-duplicate",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",
+    "github.vscode-pull-request-github",
+    "codezombiech.gitignore",
+    "eamodio.gitlens",
+    "orta.vscode-jest",
+    "andys8.jest-snippets",
+    "eg2.vscode-npm-script",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense"
+  ]
+}
