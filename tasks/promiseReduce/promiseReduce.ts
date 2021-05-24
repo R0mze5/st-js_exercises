@@ -1,40 +1,14 @@
-export function promiseReduce(promises: Array<Promise<number>>, callback: Function, initialValue: number):Promise<number> {
 
-  const value = initialValue
+// Написать функцию promiseReduce для асинхронных функций. Она принимает массив promise-ов в качестве аргументов и возвращает promise. Функция дожидается исполнения всех переданных promise-ов поочередно, ожидая их завершения. В результате выполняется reduce-функция для каждого итогового значения.
 
-  // while(currentPromiseIndex < promises.length) {
-  //   promises[currentPromiseIndex].then(promiseValue => {
-  //     value = callback(value, promiseValue)
-  //     console.log(value)
-  //     currentPromiseIndex+=1
-  //   })
-  // }
+export function promiseReduce(promises: Array<Promise<number>>, callback: <T extends number>(value1:T, value2:T) => number, initialValue: number):Promise<number> {
 
-  // return Promise.all().then(value => new Promise((resolve, reject) => {resolve(value)}) )
+  return promises.reduce((acc, promise) => {
+    return acc.then(value => promise.then(promiseValue => {
+      return new Promise(resolve => {
+        resolve(callback(value, promiseValue))
+      })
+    }))
 
-  //   for (let index = 0; index < promises.length; index++) {
-  //     promises[index].then(promiseValue => {
-  //       value = callback(value, promiseValue)
-  //       console.log(value)
-  //     })
-
-  //   }
-
-  return new Promise((resolve) => {
-
-    // promises.reduce((acc, promise) => {
-    //   console.log({ acc })
-
-    //   return acc.then(value => promise.then(promiseValue => {
-    //     return new Promise(resolve => {
-    //       resolve(callback(value, promiseValue))
-    //     })
-    //   }))
-
-    // }, Promise.resolve(initialValue))
-
-    // console.log({ value })
-
-    resolve(value)
-  })
+  }, Promise.resolve(initialValue))
 }
