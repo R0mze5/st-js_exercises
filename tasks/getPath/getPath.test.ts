@@ -35,7 +35,7 @@ describe("when pass the DOM node", () => {
     containerBody.innerHTML = testHTML
     container.appendChild(containerBody)
 
-    it.only("should return required element", () => {
+    it("should return required element", () => {
       expect(container.querySelector(selector)?.getAttribute("data-testid")).toBe(testId)
 
     })
